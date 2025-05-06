@@ -1,28 +1,27 @@
 <?php
 
+
+// app/Http/Requests/StoreNoteRequest.php
+
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class NoteRequest extends FormRequest
+class StoreNoteRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
-    public function authorize(): bool
+    public function authorize()
     {
-        return false;
+        return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
-     */
-    public function rules(): array
+    public function rules()
     {
         return [
-            //
+            'observation' => 'nullable|string',
+            'id_evaluation' => 'required|exists:evaluations,id',
+            'id_eleve' => 'required|exists:eleves,id',
+            'valeur' => 'required|numeric|min:0|max:20',
         ];
     }
 }
+

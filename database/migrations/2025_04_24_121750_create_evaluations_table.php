@@ -17,9 +17,9 @@ return new class extends Migration
             $table->time('heure_evaluation')->nullable();
             $table->string('type_evaluation', 30)->nullable();
             $table->string('matiere_evaluation', 30)->nullable();
-            $table->foreignId('id_matiere')->nullable()->constrained('matieres')->onDelete('set null');
-            $table->foreignId('id_classe')->nullable()->constrained('classes')->onDelete('set null');
-            $table->foreignId('id_enseignant')->nullable()->constrained('enseignants')->onDelete('set null');
+            $table->foreignId('id_matiere')->constrained('matieres')->onDelete('cascade');
+            $table->foreignId('id_classe')->constrained('classes')->onDelete('cascade');
+            $table->foreignId('id_enseignant')->constrained('enseignants')->onDelete('cascade');
 
             $table->timestamps();
         });

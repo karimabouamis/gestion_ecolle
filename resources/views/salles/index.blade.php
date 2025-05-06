@@ -14,22 +14,22 @@
             <table class="table table-hover align-middle text-center table-bordered table-striped rounded-4 overflow-hidden">
                 <thead class="table-primary">
                     <tr>
-                        <th>ID</th>
-                        <th>Numéro</th>
-                        <th>Type</th>
-                        <th>Actions</th>
+                        <th class="fw-bold text-dark">ID</th>
+                        <th class="fw-bold text-dark">Numéro</th>
+                        <th class="fw-bold text-dark">Type</th>
+                        <th class="fw-bold text-dark">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     @forelse ($salles as $salle)
                         <tr>
-                            <td>{{ $salle->id }}</td>
-                            <td><span class="fw-bold text-dark">{{ $salle->num_salle }}</span></td>
+                            <td class="text-muted small">{{ $salle->id }}</td>
+                            <td><span class="fw-semibold text-dark">{{ $salle->num_salle }}</span></td>
                             <td>
                                 @if ($salle->type_salle)
                                     <span class="badge bg-info text-dark">{{ $salle->type_salle }}</span>
                                 @else
-                                    <span class="text-muted">Non défini</span>
+                                    <span class="text-muted fst-italic">Non défini</span>
                                 @endif
                             </td>
                             <td>
@@ -41,7 +41,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="4" class="text-center text-muted py-4">
+                            <td colspan="4" class="text-center text-muted py-4 fs-5">
                                 <i class="bi bi-info-circle text-primary fs-4"></i><br>
                                 Aucune salle disponible.
                             </td>

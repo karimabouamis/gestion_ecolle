@@ -12,7 +12,7 @@ class MatiereController extends Controller
     public function index()
     {
         $matieres = Matiere::with('niveau')->get();
-        $langues = ['Français', 'Arabe'];  // بدون Anglais
+        $langues = ['Français', 'Arabe']; 
         $niveaux = Niveau::all();
     
         return view('matieres.index', compact('matieres', 'langues', 'niveaux'));

@@ -8,7 +8,7 @@ use App\Models\Classe;
 
 class EleveController extends Controller
 {
-    // Afficher tous les élèves
+   
     public function index()
     {
         $eleves = Eleve::all();

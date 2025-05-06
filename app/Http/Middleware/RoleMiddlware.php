@@ -13,12 +13,18 @@ class RoleMiddlware
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next,...$roles)
+    // public function handle(Request $request, Closure $next, ...$roles)
+    public function handle(Request $request, Closure $next)
     {
-        if (!in_array(Auth::user()->role, $roles)) {
 
-            return redirect()->back()->with('error', 'You do not have access to this resource.');
-        }
+        // if (!Auth::check()) {
+        //     return redirect()->route('auth.login')->with('error', 'Vous devez être connecté pour accéder à cette page.');
+        // }
+
+       
+        // if (!in_array(Auth::user()->role, $roles)) {
+        //     return redirect()->back()->with('error', 'Vous n\'avez pas accès à cette ressource.');
+        // }
 
         return $next($request);
     }

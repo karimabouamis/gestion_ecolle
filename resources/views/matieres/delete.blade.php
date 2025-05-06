@@ -4,7 +4,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content border-0 shadow rounded-3">
 
-            {{-- Header --}}
+        
             <div class="modal-header bg-danger text-white py-3">
                 <h5 class="modal-title fw-bold" id="deleteMatiereModalLabel{{$matiere->id}}">
                     <i class="bi bi-trash me-2"></i>Supprimer la Matière
@@ -16,7 +16,6 @@
                 @csrf
                 @method('DELETE')
 
-                {{-- Body --}}
                 <div class="modal-body p-4">
                     <p class="fs-5">
                         Voulez-vous vraiment supprimer la matière <strong class="text-danger">{{ $matiere->nom_matiere }}</strong> ?
@@ -26,7 +25,7 @@
                     </p>
                 </div>
 
-                {{-- Footer --}}
+                
                 <div class="modal-footer bg-light py-3">
                     <button type="button" class="btn btn-secondary rounded-3" data-bs-dismiss="modal">
                         <i class="bi bi-x-circle me-2"></i>Annuler

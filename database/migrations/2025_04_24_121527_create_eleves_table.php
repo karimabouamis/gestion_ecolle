@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('email', 100)->nullable();
             $table->string('tel', 15)->nullable();
             $table->string('genre',50);
+            $table->foreignId('id_user')->constrained('users')->onDelete('cascade');
             $table->foreignId('id_classe')->nullable()->constrained('classes')->onDelete('set null');
             $table->string('photo')->nullable();
             $table->timestamps();

@@ -1,15 +1,13 @@
+<i class="bi bi-pencil-square cursor-pointer text-primary fs-5" data-bs-toggle="modal" data-bs-target="#editEnseignantModal{{$enseignant->id}}"></i>
+<div class="modal fade" id="editEnseignantModal{{$enseignant->id}}" tabindex="-1" aria-labelledby="editEnseignantModal{{$enseignant->id}}" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content shadow-lg rounded-4 border-0">
 
-<i class="bi bi-pencil-square" data-bs-toggle="modal" data-bs-target="#editEleveModal{{$enseignant->id}}"></i>
-<div class="modal fade" id="editEseignantModal{{$enseignant->id}}" aria-labelledby="editEseignantModalLabel{{$enseignant->id}}" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="editEseignantModalLabel{{$enseignant->id}}">
-                    modifier un Enseignant
-                </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-header bg-primary text-white rounded-top-4">
+                <h5 class="modal-title mx-auto" id="editEnseignantModal{{$enseignant->id}}">Modifier une Classe</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fermer"></button>
             </div>
-            <div class="modal-body">
+
             <form action="{{ route('enseignant.update', $enseignant->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
@@ -50,14 +48,7 @@
         <button type="submit" class="btn btn-success">Modifier</button>
         <a href="{{ route('enseignant.index') }}" class="btn btn-secondary">Annuler</a>
     </form>
-            
-        <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                        <button type="submit" class="btn btn-primary">Modifier</button>
-                    </div>
-    </form>
-                   
-            </div>
+
         </div>
     </div>
 </div>

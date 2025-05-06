@@ -20,17 +20,16 @@ class Evaluation extends Model
     {
         return $this->belongsTo(Matiere::class, 'id_matiere');
     }
-
+    
     public function classe()
     {
         return $this->belongsTo(Classe::class, 'id_classe');
     }
-
+    
     public function enseignant()
     {
         return $this->belongsTo(Enseignant::class, 'id_enseignant');
     }
-
     public function notes()
     {
         return $this->hasMany(Note::class, 'id_evaluation');

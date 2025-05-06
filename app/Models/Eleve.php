@@ -34,4 +34,8 @@ class Eleve extends Model
     {
         return $this->hasMany(AbsenceEleve::class, 'id_eleve');
     }
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_user');
+    }
 }

@@ -2,64 +2,53 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\note;
+use App\Models\Note;
+use App\Models\Eleve;
+use App\Models\Evaluation;
 use Illuminate\Http\Request;
 
 class NoteController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $notes = Note::with(['evaluation', 'eleve'])->get();
+        $evaluations = Evaluation::all();
+        $eleves = Eleve::all();
+        return view('notes.index', compact('notes', 'evaluations', 'eleves'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'id_eleve' => 'required|exists:eleves,id',
+            'id_evaluation' => 'required|exists:evaluations,id',
+            'valeur' => 'required|numeric|min:0|max:20',
+            'observation' => 'nullable|string|max:255',
+        ]);
+
+        Note::create($validated);
+
+        return redirect()->route('notes.index')->with('success', 'Note ajoutée avec succès.');
+    }
+    
+    public function update(Request $request, Note $note)
+    {
+        $validated = $request->validate([
+            'id_eleve' => 'required|exists:eleves,id',
+            'id_evaluation' => 'required|exists:evaluations,id',
+            'valeur' => 'required|numeric|min:0|max:20',
+            'observation' => 'nullable|string|max:255',
+        ]);
+
+        $note->update($validated);
+
+        return redirect()->route('notes.index')->with('success', 'Note modifiée avec succès.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(note $note)
+    public function destroy(Note $note)
     {
-        //
-    }
+        $note->delete();
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(note $note)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, note $note)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(note $note)
-    {
-        //
+        return redirect()->route('notes.index')->with('success', 'Note supprimée avec succès.');
     }
 }
